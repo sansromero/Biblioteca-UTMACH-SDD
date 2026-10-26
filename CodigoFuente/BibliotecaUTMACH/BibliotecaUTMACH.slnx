@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="BibliotecaUTMACH.Core/BibliotecaUTMACH.Core.csproj" />
+  <Project Path="BibliotecaUTMACH.Tests/BibliotecaUTMACH.Tests.csproj" />
+  <Project Path="BibliotecaUTMACH.WinForms/BibliotecaUTMACH.WinForms.csproj" />
+</Solution>

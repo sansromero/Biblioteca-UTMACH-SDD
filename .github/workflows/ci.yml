@@ -1,0 +1,26 @@
+
+name: Biblioteca UTMACH - Integracion Continua
+
+on: [push, pull_request]
+
+jobs:
+  compilar-y-probar:
+    runs-on: windows-latest
+
+    steps:
+      - name: Descargar proyecto
+        uses: actions/checkout@v4
+
+      - name: Instalar .NET 10
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.0.x'
+
+      - name: Restaurar dependencias
+        run: dotnet restore "CodigoFuente/BibliotecaUTMACH/BibliotecaUTMACH.slnx"
+
+      - name: Compilar solucion
+        run: dotnet build "CodigoFuente/BibliotecaUTMACH/BibliotecaUTMACH.slnx" --configuration Release --no-restore
+
+      - name: Ejecutar pruebas
+        run: dotnet test "CodigoFuente/BibliotecaUTMACH/BibliotecaUTMACH.Tests/BibliotecaUTMACH.Tests.csproj" --configuration Release --no-build
